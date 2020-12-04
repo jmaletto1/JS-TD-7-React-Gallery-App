@@ -3,11 +3,10 @@ import PhotoRender from './PhotoRender';
 
 const Photo = (props) => {
     const photoResults = props.data;
-    console.log(photoResults);
     let picTick;
 
     picTick = photoResults.map(pic => 
-      <PhotoRender key={pic.id} owner={pic.owner} title={pic.title} id={pic.id} />
+      <PhotoRender key={pic.id} owner={pic.owner} title={pic.title} id={pic.id} server={pic.server} secret={pic.secret}/>
     );
 
     return(
