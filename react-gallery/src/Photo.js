@@ -15,9 +15,9 @@ export default class Photo extends Component {
     // console.log(this.props.loading);
     // let picTick;
   
-    if (this.props.loading) {
-      return(<h1>Loading! Please wait...</h1>)
-    }
+    // if (this.props.loading) {
+    //   return(<h1>Loading! Please wait...</h1>)
+    // }
     if (this.photoResults.length > 0) {
     this.picTick = this.photoResults.map(pic => 
       <PhotoRender key={pic.id} owner={pic.owner} title={pic.title} id={pic.id} server={pic.server} secret={pic.secret}/>

@@ -32,13 +32,15 @@ export default class App extends Component {
     this.displayResults('cats');
     this.displayResults('dogs');
     this.displayResults('gorillas');
+    // this.setState({loading: true})
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.query === this.state.query) {
-  //     this.setState({resultsData: prevState.resultsData})
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.query !== prevState.query) {
+      this.setState({loading: false});
+      console.log('The query has reverted!');
+    }
+  }
 
   displayResults = (query = 'twenty one pilots') => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -55,17 +57,19 @@ export default class App extends Component {
         this.setState({
           gorillaData: res.data.photos.photo
         })
-      } else if (query !== 'twenty one pilots') {
-        this.setState({
-          resultsData: res.data.photos.photo,
-          query: query
-        })
+      // } else if (query !== 'twenty one pilots') {
+      //   this.setState({
+      //     resultsData: res.data.photos.photo,
+      //     query: query
+      //   })
       } else { 
       this.setState({
         resultsData: res.data.photos.photo,
+        query: query,
+        loading: true
         // searchQuery: query
       })
-      this.setState({loading: false})
+
     }})
     .catch(error => {
       console.log('Error receiving the data!', error);
@@ -73,7 +77,6 @@ export default class App extends Component {
   }
     
   render() {
-    // this.props.history();
     return (
       <div className='container'>
         <BrowserRouter>
@@ -85,9 +88,11 @@ export default class App extends Component {
             <Route path='/Cats' render= {() => <Photo name='Cats' data={this.state.catData} loading={this.state.loading}/>}/>
             <Route path='/Dogs' render= {() => <Photo name='Dogs' data={this.state.dogData} loading={this.state.loading}/>}/>
             <Route path='/Gorillas' render= {() => <Photo name='Gorillas' data={this.state.gorillaData} loading={this.state.loading}/>}/> */}
-            <Route path={'/:name'} render= {() => <Photo data={this.state.resultsData} name={this.state.query}/> } />
-            {/* <Route path='/:query' render= {() => <Photo data={this.state.gorillaData} loading={this.state.loading}/>}/> */} */}
-            {/* <Route path='/:query' render= {() => <Photo name={this.state.query} data={this.state.searchData} loading={this.state.loading}/>}/> */}
+            {
+              (this.state.loading)
+              ? <h1>Loading</h1>
+              : <Route path={'/search/:name'} render= {() => <Photo data={this.state.resultsData} name={this.state.query}/> } />
+            }
             <Route component={NotFound}/>
           </Switch>
         </BrowserRouter>
