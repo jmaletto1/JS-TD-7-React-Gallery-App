@@ -18,8 +18,8 @@ class Search extends Component {
     this.props.doSearch(this.query.value);
     this.loc = this.query.value;
     e.currentTarget.reset();
-    this.props.history.push(`/`);
-    // this.props.history.push(`/${this.loc}`);
+    // this.props.history.push(`/`);
+    this.props.history.push(`/${this.loc}`);
   }
 
   render() {

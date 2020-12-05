@@ -79,7 +79,7 @@ export default class App extends Component {
             <Route path='/Cats' render= {() => <Photo name='Cats' data={this.state.catData} loading={this.state.loading}/>}/>
             <Route path='/Dogs' render= {() => <Photo name='Dogs' data={this.state.dogData} loading={this.state.loading}/>}/>
             <Route path='/Gorillas' render= {() => <Photo name='Gorillas' data={this.state.gorillaData} loading={this.state.loading}/>}/> */}
-            <Route path='/:name' component={Gallery} />
+            <Route path={'/:name'} render= {() => <Photo data={this.state.resultsData} name={this.state.query}/> } />
             {/* <Route path='/:query' render= {() => <Photo data={this.state.gorillaData} loading={this.state.loading}/>}/> */} */}
             {/* <Route path='/:query' render= {() => <Photo name={this.state.query} data={this.state.searchData} loading={this.state.loading}/>}/> */}
             <Route component={NotFound}/>
