@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PhotoRender from './PhotoRender';
 
 export default class Photo extends Component {
+  // class Photo extends Component {
 
   state = {
     resultsData: []
@@ -9,6 +10,7 @@ export default class Photo extends Component {
   
   render() {
     this.photoResults = this.props.data;
+    // console.log(this.props.pathname);
     // console.log(this.props.loading);
     // let picTick;
   
@@ -72,4 +74,4 @@ export default class Photo extends Component {
 //     )
 // }
 
-// export default Photo;
+// export default withRouter(Photo);
