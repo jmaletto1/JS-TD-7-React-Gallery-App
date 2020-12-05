@@ -7,17 +7,23 @@ export default class Photo extends Component {
   state = {
     resultsData: []
   }
+
+  handleSearch = (url) => {
+    this.props.doSearch(url)
+    // alert(`${url} oh gosh`)
+  }
   
   render() {
+    this.url = this.props.match.params.name;
+    // this.handleSearch(this.url);
     this.photoResults = this.props.data;
     // this.props.history();
-    // console.log(this.props.pathname);
-    // console.log(this.props.loading);
-    // let picTick;
+    console.log(this.props.pathname);
+    console.log(this.props.loading);
   
-    // if (this.props.loading) {
-    //   return(<h1>Loading! Please wait...</h1>)
-    // }
+    if (this.props.loading) {
+      return(<h1>Loading! Please wait...</h1>)
+    }
     if (this.photoResults.length > 0) {
     this.picTick = this.photoResults.map(pic => 
       <PhotoRender key={pic.id} owner={pic.owner} title={pic.title} id={pic.id} server={pic.server} secret={pic.secret}/>
@@ -33,9 +39,10 @@ export default class Photo extends Component {
 } else if (this.photoResults.length === 0) {
   return(
     <div>
-      <h1>Unfortunately there are no matches! Please return to the homepage, or try another search!</h1>
+      <h1>{this.url}. Unfortunately there are no matches! Please return to the homepage, or try another search!</h1>
     </div>
   )
+// }
 }
 }
 }
