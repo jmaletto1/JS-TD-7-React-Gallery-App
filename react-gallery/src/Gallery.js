@@ -28,7 +28,6 @@ export default class Photo extends Component {
       }
     }
 
-
   displayResults = (query = 'twenty one pilots') => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(res => {
