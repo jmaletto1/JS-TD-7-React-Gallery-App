@@ -1,5 +1,5 @@
 import React from 'react';
-import PhotoRender from './PhotoRender';
+// import PhotoRender from './PhotoRender';
 
 const Gallery = ({match}, props) => {
     let url = match.params.name;

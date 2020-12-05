@@ -10,6 +10,7 @@ export default class Photo extends Component {
   
   render() {
     this.photoResults = this.props.data;
+    // this.props.history();
     // console.log(this.props.pathname);
     // console.log(this.props.loading);
     // let picTick;

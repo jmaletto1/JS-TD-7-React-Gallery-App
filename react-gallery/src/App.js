@@ -6,9 +6,8 @@ import Photo from './Photo';
 import Search from './Search';
 import Nav from './Nav';
 import NotFound from './NotFound';
-import Gallery from './Gallery';
+// import Gallery from './Gallery';
 import './App.css';
-
 
 const flickrKey = apiKey;
 
@@ -34,6 +33,12 @@ export default class App extends Component {
     this.displayResults('dogs');
     this.displayResults('gorillas');
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.query === this.state.query) {
+  //     this.setState({resultsData: prevState.resultsData})
+  //   }
+  // }
 
   displayResults = (query = 'twenty one pilots') => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -68,6 +73,7 @@ export default class App extends Component {
   }
     
   render() {
+    // this.props.history();
     return (
       <div className='container'>
         <BrowserRouter>

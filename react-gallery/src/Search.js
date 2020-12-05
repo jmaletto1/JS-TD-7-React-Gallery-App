@@ -16,10 +16,10 @@ class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.doSearch(this.query.value);
-    this.loc = this.query.value;
+    this.route = this.query.value;
     e.currentTarget.reset();
     // this.props.history.push(`/`);
-    this.props.history.push(`/${this.loc}`);
+    this.props.history.push(`/${this.route}`);
   }
 
   render() {
