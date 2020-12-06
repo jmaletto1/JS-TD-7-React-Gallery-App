@@ -1,7 +1,20 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-// import Photo from './Photo';
-// import App from './App';
+
+/*
+The search component first of all sets up a class, with a "searchText" element set up on the state.
+The onSearchChange function is created, which updates said state with the value submitted by the form (via the event object).
+
+Next, the handleSubmit function (which also receives the event object (e)), prevents the form leaving the page (e.preventDefault()),
+and calls the displayResults function, with the user's value provided as the parameter.
+Then, props.history is used to push the user to the relevant url. Finally, the search field is reset using e.currentTarget.reset().
+
+In the render method, an onSubmit listener is added, which calls the handleSubmit function from the class.
+A ref (reference) is set up on the input field, meaning we can access it's results as this.query.
+
+The search component also makes use of withRouter, meaning that the history object (line 32) can be accessed, as this is typically
+ignored by <BrowserRouter>
+*/
 
 class Search extends Component {
 
@@ -17,7 +30,6 @@ class Search extends Component {
     e.preventDefault();
     this.props.doSearch(this.query.value);
     this.route = this.query.value;
-    // this.props.history.push(`/`);
     this.props.history.push(`/search/${this.route}`);
     e.currentTarget.reset();
   }
