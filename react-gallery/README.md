@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Welcome to my React Gallery App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created using React, Node.JS, axios and a range of other Javascript technologies.
 
-## Available Scripts
+## Purpose
 
-In the project directory, you can run:
+This app pulls 24 photos from the Flickr public API, and displays them sequentially using React & JSX. By default,
+users are shown 24 photos of Dogs when they first load the page. They can then navigate to the 2 other default
+options, which are Cats and Gorillas.
 
-### `npm start`
+Clients can also make use of the search bar to request their own set of photos. Once the submit button is pushed,
+a loading state is displayed on the page. When the results have been returned, this is removed, and the results are
+displayed on the page. Users can navigate forwards and backwards to subsequent/previous results where required.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### How to run the App
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run the app, simply enter 'npm start' into the terminal and wait for the app to load!
 
-### `npm test`
+#### Coding Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Most of the App is rendered from its parent element, App.js. App.js loads BrowserRouter, Switch, the CSS styles for
+the project, and then finally renders the relevant project routes (Gallery, Search, Nav, Not Found etc). The default
+route ('/') is forwarded to '/search/Dogs' so that the user can see a set of results by default.
 
-### `npm run build`
+Any route that follows '/search'/ will automatically return search results. I found this to be more efficient than
+passing the data from Search.js, into App.js, to then render to Gallery.js. Now, Search.js simply makes use of
+withRouter to call this.props.history.push(), and forward the user onto a search page that matches their request.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Gallery.js completes most of the legwork of pulling the data for each search request, via axios.get. The loading state
+is set to true, and is only set to false once the .then function has completed. In the meantime, a loading message
+is displayed on the page. If there are no results, a custom error message is displayed. Otherwise, Gallery.js
+renders the GalleryItem component, passing it the necessary data via props.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+GalleryItem simply displays an <li> with an image. The image url is also formulated within this component, using the
+props.server, props.id and props.secret variables, as well as an alt tag. To avoid any errors in the console,
+a key prop is also passed to GalleryItem from Gallery.js.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Finally, the NotFound component renders a short <p> message when a page cannot be found.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
