@@ -5,13 +5,6 @@ import apiKey from '../config';
 
 const flickrKey = apiKey;
 
-/*
- The Gallery component is initially similar to the App component. It stores the url, resultsData and loading value on the state, and defines
- the displayResults function that will return the photo results. componentDidMount() is used to set the url on the state to match the current path,
- and then call displayResults() with said url as a parameter. This means that whatever is typed after /search/, will be searched for!
-
- */
-
 export default class Photo extends Component {
       constructor() {
           super();
@@ -38,6 +31,16 @@ export default class Photo extends Component {
         this.displayResults(this.props.match.params.name);
       }
     }
+
+/* 
+  This is the main results function for search queries. It accepts a user input (or if one is not provided, a result is provided by default)
+  The function uses the axios.get method to fetch the photo results from flickr, and store them on the state (to be used in Gallery.js). The query
+  itself and the default value for loading are also set. Finally, a catch method is put in place to account for any potential errors.
+
+  The function stores the url, resultsData and loading value on the state, and defines the displayResults function that will return the photo 
+  results. componentDidMount() is used to set the url on the state to match the current path, and then call displayResults() with said url 
+  as a parameter. This means that whatever is typed after /search/, will be searched for!
+ */
 
   displayResults = (query = 'twenty one pilots') => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -72,7 +75,7 @@ If there are no results, a customised message is displayed.
     );
   return(
       <div className="photo-container">
-      <h1>{this.state.url} Photo Results</h1>
+      <h2>{this.state.url} Photo Results</h2>
       <ul>
         {this.picTick}
       </ul>
