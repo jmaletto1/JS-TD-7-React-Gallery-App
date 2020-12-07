@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/JS-TD-7-React-Gallery-App/static/css/main.11c1799c.chunk.css",
-    "main.js": "/JS-TD-7-React-Gallery-App/static/js/main.a79a2913.chunk.js",
-    "main.js.map": "/JS-TD-7-React-Gallery-App/static/js/main.a79a2913.chunk.js.map",
+    "main.js": "/JS-TD-7-React-Gallery-App/static/js/main.636f1e76.chunk.js",
+    "main.js.map": "/JS-TD-7-React-Gallery-App/static/js/main.636f1e76.chunk.js.map",
     "runtime-main.js": "/JS-TD-7-React-Gallery-App/static/js/runtime-main.ab409358.js",
     "runtime-main.js.map": "/JS-TD-7-React-Gallery-App/static/js/runtime-main.ab409358.js.map",
     "static/js/2.9ea34b04.chunk.js": "/JS-TD-7-React-Gallery-App/static/js/2.9ea34b04.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ab409358.js",
     "static/js/2.9ea34b04.chunk.js",
     "static/css/main.11c1799c.chunk.css",
-    "static/js/main.a79a2913.chunk.js"
+    "static/js/main.636f1e76.chunk.js"
   ]
 }
