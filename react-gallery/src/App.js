@@ -1,7 +1,7 @@
 // Import the necessary Components and Dependencies for this Project
 
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Search from './components/Search';
 import Nav from './components/Nav';
 import NotFound from './components/NotFound';
@@ -19,8 +19,8 @@ export default class App extends Component {
   render() {
     return (
       <div className='container'>
-        <BrowserRouter>
-          {/* <Search doSearch={this.displayResults}/> */}
+        {/* <BrowserRouter basename="/JS-TD-7-React-Gallery-App/"> */}
+        <HashRouter>
           <Search />
           <Nav />
           <Switch>
@@ -29,7 +29,8 @@ export default class App extends Component {
             <Route path="/search/:name" render={(props) => <Gallery {...props} />}/> 
             <Route component={NotFound}/>
           </Switch>
-        </BrowserRouter>
+          </HashRouter>
+        {/* </BrowserRouter> */}
       </div>
     )
   }
